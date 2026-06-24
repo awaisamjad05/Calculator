@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Aether Calc - A visually stunning, premium web-based scientific calculator featuring glassmorphism, interactive history, custom themes, and smooth fluid animations.">
+    <title>AG-TECH Calc | Premium Web Calculator</title>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Main Stylesheet -->
+    <link rel="stylesheet" href="style.css">
+</head>
+<body class="theme-dark">
+    <!-- Ambient Background Blobs for Visual Aesthetics -->
+    <div class="bg-blobs">
+        <div class="blob blob-1"></div>
+        <div class="blob blob-2"></div>
+        <div class="blob blob-3"></div>
+    </div>
+
+    <!-- Hidden Header for SEO & Accessibility -->
+    <h1 class="sr-only">AG-TECH Calc - Premium Scientific Calculator</h1>
+
+    <!-- App Container -->
+    <main class="app-container" id="calculator-app">
+        <!-- Glassmorphic Calculator Interface -->
+        <div class="calculator-glass">
+            
+            <!-- Top Navigation & Controls Bar -->
+            <header class="calc-header">
+                <div class="brand">
+                    <span class="brand-logo"></span>
+                    <span class="brand-name">AG-TECH<span class="accent-text">Calc</span></span>
+                </div>
+                
+                <div class="control-actions">
+                    <!-- Toggle Scientific Mode -->
+                    <button id="toggle-sci-btn" class="icon-btn tooltip" aria-label="Toggle Scientific Mode">
+                        <span class="tooltip-text">Scientific Mode</span>
+                        <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <line x1="4" y1="9" x2="20" y2="9"></line>
+                            <line x1="4" y1="15" x2="20" y2="15"></line>
+                            <line x1="10" y1="3" x2="14" y2="21"></line>
+                        </svg>
+                    </button>
+                    
+                    <!-- Toggle History Drawer -->
+                    <button id="toggle-history-btn" class="icon-btn tooltip" aria-label="Toggle History Panel">
+                        <span class="tooltip-text">View History</span>
+                        <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <circle cx="12" cy="12" r="10"></circle>
+                            <polyline points="12 6 12 12 16 14"></polyline>
+                        </svg>
+                    </button>
+
+                    <!-- Theme Switcher Menu Trigger -->
+                    <div class="theme-menu-container">
+                        <button id="theme-menu-btn" class="icon-btn tooltip" aria-label="Switch Theme">
+                            <span class="tooltip-text">Change Theme</span>
+                            <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <circle cx="12" cy="12" r="5"></circle>
+                                <line x1="12" y1="1" x2="12" y2="3"></line>
+                                <line x1="12" y1="21" x2="12" y2="23"></line>
+                                <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                                <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                                <line x1="1" y1="12" x2="3" y2="12"></line>
+                                <line x1="21" y1="12" x2="23" y2="12"></line>
+                                <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                                <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                            </svg>
+                        </button>
+                        <div id="theme-dropdown" class="dropdown-menu">
+                            <button class="dropdown-item" data-theme="theme-dark" id="theme-dark-opt">
+                                <span class="theme-dot dark"></span> Dark Nebula
+                            </button>
+                            <button class="dropdown-item" data-theme="theme-light" id="theme-light-opt">
+                                <span class="theme-dot light"></span> Frosted Light
+                            </button>
+                            <button class="dropdown-item" data-theme="theme-aurora" id="theme-aurora-opt">
+                                <span class="theme-dot aurora"></span> Aurora Glow
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </header>
+
+            <!-- Screen Display Area -->
+            <section class="calc-display" id="screen-display">
+                <!-- Angle Mode Indicator (RAD/DEG) -->
+                <div class="indicator-bar">
+                    <span id="angle-indicator" class="badge">DEG</span>
+                    <span id="memory-indicator" class="badge hidden">M</span>
+                </div>
+                <!-- Equation Preview -->
+                <div class="display-expression-container">
+                    <div id="display-expression" class="expression-text"></div>
+                </div>
+                <!-- Main Value Input/Result -->
+                <div class="display-input-container">
+                    <div id="display-input" class="input-text">0</div>
+                </div>
+            </section>
+
+            <!-- Keyboard Layout -->
+            <div class="calc-body">
+                <!-- Scientific Panel (Slides down/expands when active) -->
+                <section class="scientific-panel hidden" id="scientific-panel">
+                    <button class="btn btn-sci" id="btn-deg-rad" data-action="deg-rad">rad</button>
+                    <button class="btn btn-sci" id="btn-sin" data-val="sin(">sin</button>
+                    <button class="btn btn-sci" id="btn-cos" data-val="cos(">cos</button>
+                    <button class="btn btn-sci" id="btn-tan" data-val="tan(">tan</button>
+                    
+                    <button class="btn btn-sci" id="btn-pi" data-val="π">π</button>
+                    <button class="btn btn-sci" id="btn-ln" data-val="ln(">ln</button>
+                    <button class="btn btn-sci" id="btn-log" data-val="log(">log</button>
+                    <button class="btn btn-sci" id="btn-fact" data-action="fact">x!</button>
+                    
+                    <button class="btn btn-sci" id="btn-e" data-val="e">e</button>
+                    <button class="btn btn-sci" id="btn-pow" data-val="^">x<sup>y</sup></button>
+                    <button class="btn btn-sci" id="btn-sqrt" data-val="√(">√</button>
+                    <button class="btn btn-sci" id="btn-exp" data-val="E">EXP</button>
+                </section>
+
+                <!-- Standard Keypad Panel -->
+                <section class="keypad-panel">
+                    <!-- Row 1: Actions -->
+                    <button class="btn btn-clear" id="btn-clear" data-action="clear">AC</button>
+                    <button class="btn btn-action" id="btn-parentheses" data-action="parentheses">( )</button>
+                    <button class="btn btn-action" id="btn-percent" data-action="percent">%</button>
+                    <button class="btn btn-operator" id="btn-div" data-val="÷">÷</button>
+                    
+                    <!-- Row 2: Numbers 7, 8, 9 & Mult -->
+                    <button class="btn btn-num" id="btn-7" data-val="7">7</button>
+                    <button class="btn btn-num" id="btn-8" data-val="8">8</button>
+                    <button class="btn btn-num" id="btn-9" data-val="9">9</button>
+                    <button class="btn btn-operator" id="btn-mul" data-val="×">×</button>
+                    
+                    <!-- Row 3: Numbers 4, 5, 6 & Sub -->
+                    <button class="btn btn-num" id="btn-4" data-val="4">4</button>
+                    <button class="btn btn-num" id="btn-5" data-val="5">5</button>
+                    <button class="btn btn-num" id="btn-6" data-val="6">6</button>
+                    <button class="btn btn-operator" id="btn-sub" data-val="−">−</button>
+                    
+                    <!-- Row 4: Numbers 1, 2, 3 & Add -->
+                    <button class="btn btn-num" id="btn-1" data-val="1">1</button>
+                    <button class="btn btn-num" id="btn-2" data-val="2">2</button>
+                    <button class="btn btn-num" id="btn-3" data-val="3">3</button>
+                    <button class="btn btn-operator" id="btn-add" data-val="+">+</button>
+                    
+                    <!-- Row 5: 0, Decimal, Backspace & Equals -->
+                    <button class="btn btn-num" id="btn-0" data-val="0">0</button>
+                    <button class="btn btn-num" id="btn-dot" data-val=".">.</button>
+                    <button class="btn btn-num tooltip" id="btn-backspace" data-action="backspace" aria-label="Backspace">
+                        <span class="tooltip-text">Backspace (Delete)</span>
+                        <svg class="icon-backspace" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M21 4H8l-7 8 7 8h13a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2z"></path>
+                            <line x1="18" y1="9" x2="12" y2="15"></line>
+                            <line x1="12" y1="9" x2="18" y2="15"></line>
+                        </svg>
+                    </button>
+                    <button class="btn btn-equals" id="btn-equals" data-action="calculate">=</button>
+                </section>
+            </div>
+
+            <!-- Sliding History Panel Inside the Calculator Structure -->
+            <aside class="history-drawer" id="history-drawer">
+                <div class="drawer-header">
+                    <h3>Calculation History</h3>
+                    <button id="close-history-btn" class="icon-btn" aria-label="Close History">
+                        <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <line x1="18" y1="6" x2="6" y2="18"></line>
+                            <line x1="6" y1="6" x2="18" y2="18"></line>
+                        </svg>
+                    </button>
+                </div>
+                <div class="drawer-content" id="history-list">
+                    <!-- History entries will be injected here dynamically -->
+                    <div class="empty-state">
+                        <svg class="empty-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                            <circle cx="12" cy="12" r="10"></circle>
+                            <polyline points="12 6 12 12 16 14"></polyline>
+                        </svg>
+                        <p>No calculations yet</p>
+                    </div>
+                </div>
+                <div class="drawer-footer">
+                    <button id="clear-history-btn" class="clear-btn">Clear History</button>
+                </div>
+            </aside>
+            
+        </div>
+    </main>
+
+    <!-- Main JavaScript Logic -->
+    <script src="script.js"></script>
+</body>
+</html>

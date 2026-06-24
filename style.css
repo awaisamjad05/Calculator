@@ -1,0 +1,822 @@
+/* ==========================================================================
+   Aether Calc - Premium Styling & Visual System
+   ========================================================================== */
+
+/* --- Custom Theme Variables --- */
+.theme-dark {
+    --bg-primary: #08090d;
+    --bg-gradient: radial-gradient(circle at 50% 50%, #111424 0%, #08090d 100%);
+    --bg-secondary: rgba(18, 22, 36, 0.45);
+    --bg-tertiary: rgba(28, 34, 56, 0.6);
+    --text-primary: #f8fafc;
+    --text-secondary: #94a3b8;
+    
+    --accent-gradient: linear-gradient(135deg, #a78bfa 0%, #6366f1 100%);
+    --accent-solid: #6366f1;
+    --accent-glow: rgba(99, 102, 241, 0.3);
+    --accent-text: #a78bfa;
+    
+    --btn-num-bg: rgba(255, 255, 255, 0.04);
+    --btn-num-text: #f8fafc;
+    --btn-num-hover: rgba(255, 255, 255, 0.09);
+    
+    --btn-op-bg: rgba(99, 102, 241, 0.12);
+    --btn-op-text: #818cf8;
+    --btn-op-hover: rgba(99, 102, 241, 0.25);
+    
+    --btn-sci-bg: rgba(20, 184, 166, 0.08);
+    --btn-sci-text: #2dd4bf;
+    --btn-sci-hover: rgba(20, 184, 166, 0.22);
+    
+    --btn-equals-bg: linear-gradient(135deg, #818cf8 0%, #ec4899 100%);
+    --btn-equals-text: #ffffff;
+    --btn-equals-shadow: rgba(236, 72, 153, 0.35);
+    
+    --border-color: rgba(255, 255, 255, 0.07);
+    --border-glow: rgba(99, 102, 241, 0.1);
+    --shadow-color: rgba(0, 0, 0, 0.4);
+    --scrollbar-thumb: rgba(255, 255, 255, 0.1);
+}
+
+.theme-light {
+    --bg-primary: #f3f4f6;
+    --bg-gradient: radial-gradient(circle at 50% 50%, #ffffff 0%, #e5e7eb 100%);
+    --bg-secondary: rgba(255, 255, 255, 0.45);
+    --bg-tertiary: rgba(255, 255, 255, 0.75);
+    --text-primary: #0f172a;
+    --text-secondary: #475569;
+    
+    --accent-gradient: linear-gradient(135deg, #4f46e5 0%, #06b6d4 100%);
+    --accent-solid: #4f46e5;
+    --accent-glow: rgba(79, 70, 229, 0.15);
+    --accent-text: #4f46e5;
+    
+    --btn-num-bg: rgba(15, 23, 42, 0.04);
+    --btn-num-text: #0f172a;
+    --btn-num-hover: rgba(15, 23, 42, 0.09);
+    
+    --btn-op-bg: rgba(79, 70, 229, 0.08);
+    --btn-op-text: #4f46e5;
+    --btn-op-hover: rgba(79, 70, 229, 0.18);
+    
+    --btn-sci-bg: rgba(13, 148, 136, 0.06);
+    --btn-sci-text: #0f766e;
+    --btn-sci-hover: rgba(13, 148, 136, 0.15);
+    
+    --btn-equals-bg: linear-gradient(135deg, #4f46e5 0%, #0d9488 100%);
+    --btn-equals-text: #ffffff;
+    --btn-equals-shadow: rgba(79, 70, 229, 0.25);
+    
+    --border-color: rgba(15, 23, 42, 0.08);
+    --border-glow: rgba(79, 70, 229, 0.05);
+    --shadow-color: rgba(15, 23, 42, 0.08);
+    --scrollbar-thumb: rgba(15, 23, 42, 0.15);
+}
+
+.theme-aurora {
+    --bg-primary: #020617;
+    --bg-gradient: radial-gradient(circle at 50% 50%, #06152d 0%, #020617 100%);
+    --bg-secondary: rgba(11, 27, 44, 0.5);
+    --bg-tertiary: rgba(17, 39, 64, 0.65);
+    --text-primary: #f0fdf4;
+    --text-secondary: #94a3b8;
+    
+    --accent-gradient: linear-gradient(135deg, #10b981 0%, #06b6d4 100%);
+    --accent-solid: #10b981;
+    --accent-glow: rgba(16, 185, 129, 0.3);
+    --accent-text: #34d399;
+    
+    --btn-num-bg: rgba(255, 255, 255, 0.03);
+    --btn-num-text: #f0fdf4;
+    --btn-num-hover: rgba(255, 255, 255, 0.08);
+    
+    --btn-op-bg: rgba(6, 182, 212, 0.12);
+    --btn-op-text: #22d3ee;
+    --btn-op-hover: rgba(6, 182, 212, 0.25);
+    
+    --btn-sci-bg: rgba(16, 185, 129, 0.08);
+    --btn-sci-text: #34d399;
+    --btn-sci-hover: rgba(16, 185, 129, 0.22);
+    
+    --btn-equals-bg: linear-gradient(135deg, #10b981 0%, #3b82f6 100%);
+    --btn-equals-text: #ffffff;
+    --btn-equals-shadow: rgba(16, 185, 129, 0.35);
+    
+    --border-color: rgba(6, 182, 212, 0.1);
+    --border-glow: rgba(16, 185, 129, 0.08);
+    --shadow-color: rgba(0, 0, 0, 0.5);
+    --scrollbar-thumb: rgba(16, 185, 129, 0.15);
+}
+
+/* --- Base & Reset Rules --- */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Outfit', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    user-select: none;
+    -webkit-user-select: none;
+}
+
+body {
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: var(--bg-primary);
+    background-image: var(--bg-gradient);
+    overflow: hidden;
+    position: relative;
+    color: var(--text-primary);
+    transition: background 0.5s ease, color 0.3s ease;
+}
+
+/* Screen Reader Only Utility for SEO */
+.sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
+}
+
+/* --- Animated Ambient Background Blobs --- */
+.bg-blobs {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    overflow: hidden;
+    z-index: 0;
+    pointer-events: none;
+}
+
+.blob {
+    position: absolute;
+    border-radius: 50%;
+    filter: blur(100px);
+    opacity: 0.22;
+    mix-blend-mode: screen;
+    animation: float 22s infinite alternate ease-in-out;
+}
+
+.blob-1 {
+    width: 450px;
+    height: 450px;
+    background: #6366f1;
+    top: -10%;
+    left: -10%;
+    animation-duration: 25s;
+}
+
+.blob-2 {
+    width: 500px;
+    height: 500px;
+    background: #ec4899;
+    bottom: -15%;
+    right: -10%;
+    animation-duration: 28s;
+}
+
+.blob-3 {
+    width: 380px;
+    height: 380px;
+    background: #14b8a6;
+    top: 45%;
+    left: 55%;
+    animation-duration: 20s;
+}
+
+@keyframes float {
+    0% {
+        transform: translate(0, 0) scale(1) rotate(0deg);
+    }
+    33% {
+        transform: translate(30px, -50px) scale(1.1) rotate(120deg);
+    }
+    66% {
+        transform: translate(-20px, 20px) scale(0.95) rotate(240deg);
+    }
+    100% {
+        transform: translate(0, 0) scale(1) rotate(360deg);
+    }
+}
+
+/* --- App Container & Layout --- */
+.app-container {
+    position: relative;
+    z-index: 1;
+    width: 100%;
+    max-width: 400px;
+    padding: 20px;
+    transition: max-width 0.4s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+.app-container.scientific-expanded {
+    max-width: 440px; /* Expands slightly when scientific panel opens */
+}
+
+/* --- Glassmorphic Calculator Outer Shell --- */
+.calculator-glass {
+    position: relative;
+    width: 100%;
+    background: var(--bg-secondary);
+    backdrop-filter: blur(24px) saturate(180%);
+    -webkit-backdrop-filter: blur(24px) saturate(180%);
+    border: 1px solid var(--border-color);
+    border-radius: 32px;
+    padding: 24px;
+    box-shadow: 0 25px 50px -12px var(--shadow-color),
+                inset 0 1px 1px var(--border-glow);
+    overflow: hidden;
+    transition: all 0.4s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+/* --- Header Section --- */
+.calc-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.brand {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.brand-logo {
+    width: 12px;
+    height: 12px;
+    border-radius: 3px;
+    background: var(--accent-gradient);
+    box-shadow: 0 0 10px var(--accent-solid);
+}
+
+.brand-name {
+    font-size: 1rem;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+    color: var(--text-primary);
+}
+
+.accent-text {
+    background: var(--accent-gradient);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.control-actions {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+/* --- Icon Buttons with Tooltips --- */
+.icon-btn {
+    background: none;
+    border: none;
+    outline: none;
+    color: var(--text-secondary);
+    width: 36px;
+    height: 36px;
+    border-radius: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    position: relative;
+    transition: all 0.2s ease;
+}
+
+.icon-btn:hover {
+    color: var(--text-primary);
+    background: var(--btn-num-hover);
+}
+
+.icon-btn .icon {
+    width: 20px;
+    height: 20px;
+    transition: transform 0.3s ease;
+}
+
+.icon-btn:active .icon {
+    transform: scale(0.9);
+}
+
+/* Tooltip design */
+.tooltip .tooltip-text {
+    visibility: hidden;
+    width: 110px;
+    background-color: var(--bg-tertiary);
+    color: var(--text-primary);
+    text-align: center;
+    border-radius: 6px;
+    padding: 6px;
+    position: absolute;
+    z-index: 10;
+    bottom: 125%;
+    left: 50%;
+    margin-left: -55px;
+    opacity: 0;
+    transition: opacity 0.3s;
+    font-size: 0.75rem;
+    border: 1px solid var(--border-color);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+    pointer-events: none;
+}
+
+.tooltip:hover .tooltip-text {
+    visibility: visible;
+    opacity: 1;
+}
+
+/* Theme Dropdown styling */
+.theme-menu-container {
+    position: relative;
+}
+
+.dropdown-menu {
+    display: none;
+    position: absolute;
+    top: 110%;
+    right: 0;
+    background: var(--bg-tertiary);
+    backdrop-filter: blur(15px);
+    border: 1px solid var(--border-color);
+    border-radius: 12px;
+    padding: 6px;
+    width: 150px;
+    box-shadow: 0 10px 25px var(--shadow-color);
+    z-index: 5;
+    transform-origin: top right;
+    animation: scaleIn 0.2s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+.dropdown-menu.show {
+    display: block;
+}
+
+@keyframes scaleIn {
+    from {
+        opacity: 0;
+        transform: scale(0.9) translateY(-5px);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1) translateY(0);
+    }
+}
+
+.dropdown-item {
+    background: none;
+    border: none;
+    width: 100%;
+    padding: 8px 12px;
+    color: var(--text-primary);
+    font-size: 0.85rem;
+    text-align: left;
+    border-radius: 8px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    transition: background 0.2s ease;
+}
+
+.dropdown-item:hover {
+    background: var(--btn-num-hover);
+}
+
+.theme-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    display: inline-block;
+}
+
+.theme-dot.dark { background: #818cf8; }
+.theme-dot.light { background: #4f46e5; }
+.theme-dot.aurora { background: #10b981; }
+
+/* --- Screen Display Section --- */
+.calc-display {
+    background: rgba(0, 0, 0, 0.15);
+    border: 1px solid rgba(255, 255, 255, 0.03);
+    border-radius: 20px;
+    padding: 16px 20px;
+    margin-bottom: 24px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    align-items: flex-end;
+    height: 140px;
+    overflow: hidden;
+    position: relative;
+}
+
+.indicator-bar {
+    position: absolute;
+    top: 12px;
+    left: 16px;
+    display: flex;
+    gap: 6px;
+}
+
+.badge {
+    background: var(--btn-num-hover);
+    color: var(--text-secondary);
+    font-size: 0.65rem;
+    font-weight: 600;
+    padding: 2px 8px;
+    border-radius: 4px;
+    letter-spacing: 0.5px;
+    transition: all 0.2s ease;
+}
+
+.badge.hidden {
+    display: none;
+}
+
+.display-expression-container {
+    width: 100%;
+    overflow-x: auto;
+    overflow-y: hidden;
+    text-align: right;
+    margin-bottom: 6px;
+    scrollbar-width: none; /* Firefox */
+}
+
+.display-expression-container::-webkit-scrollbar {
+    display: none; /* Chrome/Safari */
+}
+
+.expression-text {
+    font-size: 0.95rem;
+    color: var(--text-secondary);
+    white-space: nowrap;
+    letter-spacing: 0.5px;
+    min-height: 1.2rem;
+    transition: all 0.15s ease;
+}
+
+.display-input-container {
+    width: 100%;
+    overflow-x: auto;
+    overflow-y: hidden;
+    text-align: right;
+    scrollbar-width: none;
+}
+
+.display-input-container::-webkit-scrollbar {
+    display: none;
+}
+
+.input-text {
+    font-size: 2.2rem;
+    font-weight: 500;
+    color: var(--text-primary);
+    white-space: nowrap;
+    letter-spacing: -0.5px;
+    transition: font-size 0.15s ease, color 0.3s ease;
+}
+
+/* --- Keyboard Grid --- */
+.calc-body {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+/* Scientific Panel Grid */
+.scientific-panel {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 10px;
+    max-height: 0;
+    opacity: 0;
+    overflow: hidden;
+    transform: scaleY(0);
+    transform-origin: top;
+    transition: max-height 0.4s cubic-bezier(0.25, 1, 0.5, 1),
+                opacity 0.3s ease,
+                transform 0.4s cubic-bezier(0.25, 1, 0.5, 1),
+                margin-bottom 0.4s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+.scientific-panel.show {
+    max-height: 180px; /* Space for 3 rows */
+    opacity: 1;
+    transform: scaleY(1);
+    margin-bottom: 4px;
+}
+
+/* Keypad Panel Grid */
+.keypad-panel {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 10px;
+}
+
+/* --- Calculator Buttons --- */
+.btn {
+    border: none;
+    outline: none;
+    height: 58px;
+    border-radius: 16px;
+    font-size: 1.25rem;
+    font-weight: 500;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+    transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* Ripple Click Animation Effect */
+.btn::after {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 120%;
+    height: 120%;
+    background: rgba(255, 255, 255, 0.15);
+    border-radius: 50%;
+    transform: translate(-50%, -50%) scale(0);
+    opacity: 0;
+    transition: transform 0.5s, opacity 0.5s;
+    pointer-events: none;
+}
+
+.btn:active::after {
+    transform: translate(-50%, -50%) scale(1);
+    opacity: 1;
+    transition: 0s;
+}
+
+/* Button Classes */
+.btn:active {
+    transform: scale(0.95);
+}
+
+.btn-num {
+    background: var(--btn-num-bg);
+    color: var(--btn-num-text);
+    border: 1px solid var(--border-color);
+}
+
+.btn-num:hover {
+    background: var(--btn-num-hover);
+}
+
+.btn-clear {
+    background: rgba(239, 68, 68, 0.12);
+    color: #ef4444;
+    border: 1px solid rgba(239, 68, 68, 0.15);
+}
+
+.btn-clear:hover {
+    background: rgba(239, 68, 68, 0.22);
+}
+
+.btn-action {
+    background: var(--btn-num-bg);
+    color: var(--text-secondary);
+    border: 1px solid var(--border-color);
+}
+
+.btn-action:hover {
+    background: var(--btn-num-hover);
+    color: var(--text-primary);
+}
+
+.btn-operator {
+    background: var(--btn-op-bg);
+    color: var(--btn-op-text);
+    font-size: 1.4rem;
+}
+
+.btn-operator:hover {
+    background: var(--btn-op-hover);
+}
+
+.btn-sci {
+    background: var(--btn-sci-bg);
+    color: var(--btn-sci-text);
+    font-size: 0.95rem;
+    font-weight: 500;
+    height: 46px; /* Slightly shorter for scientific panel */
+    border-radius: 12px;
+}
+
+.btn-sci:hover {
+    background: var(--btn-sci-hover);
+}
+
+.btn-sci sup {
+    font-size: 0.65rem;
+}
+
+.btn-equals {
+    background: var(--btn-equals-bg);
+    color: var(--btn-equals-text);
+    grid-column: span 1;
+    font-size: 1.4rem;
+    box-shadow: 0 6px 20px var(--btn-equals-shadow);
+}
+
+.btn-equals:hover {
+    filter: brightness(1.1);
+    box-shadow: 0 8px 25px var(--btn-equals-shadow);
+}
+
+.icon-backspace {
+    width: 22px;
+    height: 22px;
+}
+
+/* --- Sliding History Panel --- */
+.history-drawer {
+    position: absolute;
+    top: 0;
+    right: -100%;
+    width: 100%;
+    height: 100%;
+    background: var(--bg-tertiary);
+    backdrop-filter: blur(30px);
+    -webkit-backdrop-filter: blur(30px);
+    border-left: 1px solid var(--border-color);
+    border-radius: 32px;
+    display: flex;
+    flex-direction: column;
+    z-index: 10;
+    transition: right 0.4s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+.history-drawer.open {
+    right: 0;
+}
+
+.drawer-header {
+    padding: 20px 24px;
+    border-bottom: 1px solid var(--border-color);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.drawer-header h3 {
+    font-size: 1.05rem;
+    font-weight: 600;
+}
+
+.drawer-content {
+    flex: 1;
+    padding: 16px 20px;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+}
+
+/* Custom Scrollbar for Drawer Content */
+.drawer-content::-webkit-scrollbar {
+    width: 5px;
+}
+
+.drawer-content::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+.drawer-content::-webkit-scrollbar-thumb {
+    background: var(--scrollbar-thumb);
+    border-radius: 10px;
+}
+
+/* History List Items */
+.history-item {
+    background: rgba(0, 0, 0, 0.12);
+    border: 1px solid var(--border-color);
+    border-radius: 12px;
+    padding: 12px 14px;
+    text-align: right;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.history-item:hover {
+    background: var(--btn-num-hover);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px var(--shadow-color);
+}
+
+.history-expr {
+    font-size: 0.8rem;
+    color: var(--text-secondary);
+    white-space: nowrap;
+    overflow-x: auto;
+    scrollbar-width: none;
+}
+
+.history-expr::-webkit-scrollbar {
+    display: none;
+}
+
+.history-res {
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: var(--text-primary);
+}
+
+/* Empty State styling */
+.empty-state {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    color: var(--text-secondary);
+    gap: 12px;
+}
+
+.empty-icon {
+    width: 48px;
+    height: 48px;
+    opacity: 0.3;
+}
+
+.empty-state p {
+    font-size: 0.9rem;
+    opacity: 0.6;
+}
+
+.drawer-footer {
+    padding: 16px 24px;
+    border-top: 1px solid var(--border-color);
+}
+
+.clear-btn {
+    width: 100%;
+    background: none;
+    border: 1px solid var(--border-color);
+    color: var(--text-secondary);
+    padding: 10px;
+    border-radius: 12px;
+    cursor: pointer;
+    font-size: 0.85rem;
+    font-weight: 500;
+    transition: all 0.2s ease;
+}
+
+.clear-btn:hover {
+    background: rgba(239, 68, 68, 0.08);
+    color: #ef4444;
+    border-color: rgba(239, 68, 68, 0.2);
+}
+
+/* --- Keyboard Glow Support --- */
+.key-pressed {
+    transform: scale(0.93) !important;
+    box-shadow: 0 0 12px var(--accent-glow) !important;
+}
+
+/* --- Responsive Adjustments --- */
+@media (max-height: 700px) {
+    .app-container {
+        padding: 10px;
+    }
+    
+    .calculator-glass {
+        padding: 16px;
+    }
+    
+    .calc-display {
+        height: 110px;
+        margin-bottom: 16px;
+    }
+    
+    .input-text {
+        font-size: 1.8rem;
+    }
+    
+    .btn {
+        height: 48px;
+        font-size: 1.1rem;
+    }
+    
+    .btn-sci {
+        height: 38px;
+    }
+}
